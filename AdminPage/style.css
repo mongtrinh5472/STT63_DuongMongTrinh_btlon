@@ -1,0 +1,388 @@
+/*! Reset */
+
+* {
+      margin: 0;
+      padding: 0;
+}
+a,button {
+      text-decoration: none;
+      color: #333;
+}
+ul {
+      list-style-type: none;
+      list-style: none;
+}
+body {
+      color: #333;
+      font-family: Helvetica,sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+}
+
+/*! Layout */
+#navigation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 98%;
+      background-color: #9ea6d4;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+}
+#navigation #time-now{
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 25px;
+      font-weight: bold;
+      color: rgb(233, 233, 233);
+}
+#navigation .logo img{
+      max-width: 90px;
+      max-height: 35px;
+      min-height: 100%;
+      height: auto;
+      width: auto;
+      margin-left: -150px;
+}
+#navigation h4 {
+      color: white;
+      margin-top: 10px;
+}
+#navigation ul li {
+      cursor: pointer;
+}
+#button-logout-admin {
+      margin: 0 10px;
+      width: 100px;
+      height: 30px;
+      border: 1px solid #333;
+      border-radius: 5px;
+      background-color: #ececec;
+      transition: 0.3s;
+}
+#button-logout-admin:hover {
+      background-color: #f73c3c;
+      color: white;
+      border: none;
+}
+#navigation p {
+      margin-top: 5px;
+      font-size: 17px;
+}
+#navigation ul {
+      margin-top: 5px;
+      width: 500px;
+      display: flex;
+      justify-content: space-between;
+}
+#nav-product-admin {
+      font-size: 17px;
+      transition: 0.2s;
+}
+#nav-product-admin:hover {
+      color: white;
+}
+#nav-order-admin {
+      font-size: 17px;
+      transition: 0.2s;
+}
+#nav-order-admin:hover {
+      color: white;
+}
+#nav-user-admin {
+      font-size: 17px;
+      transition: 0.2s;
+}
+#nav-user-admin:hover {
+      color: white;
+}
+#wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+#main-content {
+      margin-top: 70px;
+      padding: 20px;
+      text-align: center;
+}
+#main-content h1 {
+      margin: 30px auto;
+}
+#main-content #content-product-admin {
+      animation: topout 0.5s;
+      padding: 10px;
+      box-shadow: rgba(0, 93, 244, 0.3) 0px 0px 0px 3px;
+}
+#main-content #content-product-admin table .option-btn-admin {
+      border: none;
+      border-radius: 4px;
+      background-color: rgb(231, 231, 231);
+      width: 70px;
+      height: 30px;
+      margin-bottom: 10px;
+}
+#main-content #content-product-admin table .option-btn-admin:hover {
+      background-color: #b4bdf1;
+      color: white;
+}
+#main-content #content-product-admin table th {
+      padding: 10px 30px;
+      background-color: #b4bdf1;
+}
+#main-content #content-product-admin table .table-name {
+      width: 170px;
+}
+#main-content #content-product-admin table .table-price {
+      width: 140px;
+}
+#main-content #content-product-admin table img {
+      width: 140px;
+      object-fit: cover;
+      margin: 0;
+}
+/*! Page Number */
+#numberOfPageProduct {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      width: auto;
+      justify-content: center;
+}
+#numberOfPageProduct .numberPage {
+      width: 30px;
+      height: 30px;
+      margin: 0 5px;
+      background-color: #f4f4f4;
+      border: none;
+      border-radius: 1px;
+      transition: 0.3s;
+      cursor: pointer;
+}
+#numberOfPageProduct .numberPage:hover {
+      color: white;
+      background-color: #bdc4e9;
+}
+#numberOfPageProduct .numberPage.clicked {
+      color: black;
+      border: 1px solid black;
+}
+#main-content #content-order-admin {
+      display: none;
+      padding: 10px;
+      box-shadow: rgba(0, 93, 244, 0.3) 0px 0px 0px 3px;
+      animation: topout 0.5s;
+}
+#main-content #content-order-admin table .table-name {
+      width: 250px;
+}
+#main-content #content-order-admin table .table-price {
+      width: 150px;
+}
+#main-content #content-order-admin table th {
+      padding: 10px 30px;
+      background-color: #b4bdf1;
+}
+#main-content #content-order-admin table img {
+      width: 100px;
+      height: 100px;
+}
+#main-content #content-order-admin #content-order-table tr {
+      cursor: pointer;
+}
+#main-content #content-order-admin #content-order-table tr:hover .table-td{
+      background-color: #eaeaea;
+} 
+#main-content #content-order-admin #content-order-table tr .delete-bill-btn {
+      transition: 0.3s;
+      font-size: 15px;
+}
+#main-content #content-order-admin #content-order-table tr .delete-bill-btn:hover {
+      font-size: 17.5px;
+      color: white;
+      background-color: #f73c3c;
+}
+#content-add-product {
+      position: fixed;
+      top: 20%;
+      left: 75%;
+      padding: 20px;
+      border: 1px solid #000;
+      border-radius: 5px;
+}
+#content-add-product #showIMGNow {
+      width: 150px;
+      height: 150px;
+}
+#content-add-product button {
+      width: 100px;
+      height: 30px;
+      border-radius: 5px;
+      border: 1px solid #000;
+      transition: 0.3s;
+}
+#content-add-product button:hover {
+      background-color: #f43838;
+      border: none;
+      color: white;
+}
+.btn-option {
+      padding: 3px 5px;
+      border-radius: 5px;
+      border: 1px solid #d3d3d3;
+}
+input {
+      box-sizing: border-box;
+      border-radius: 5px;
+      font-size: 16px;
+      height: 40px;
+      padding: 10px;
+      width: 300px;
+      border: 1px solid #d3d3d3;
+      margin-bottom: 13px;
+}
+#modal-billDetail {
+      display: none;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      top: 0;
+      left: -5px;
+      width: 100vw;
+      height: 100vh;
+      z-index: 10;
+      animation: topout 0.4s;
+}
+#billDetail {
+      display: none;
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%,0%);
+      width: 500px;
+      padding: 20px;
+      background-color: #ffffff;
+      z-index: 20;
+}
+#billDetail #bill-complete {
+      position: absolute;
+      left: 200px;
+      top:87%;
+      border-radius: 4px;
+      border: 1px solid #333;
+      background-color: white;
+      width: 120px;
+      height: 35px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: 0.3s;
+}
+#billDetail #bill-complete:hover {
+      background-color: #9ea6d4;
+      border: none;
+      color: white;
+}
+#billDetail #close_billdetail {
+      border: none;
+      background-color: white;
+      font-size: 30px;
+      position: absolute;
+      left: 93%;
+      cursor: pointer;
+      transition: 0.3s;
+}
+#billDetail #close_billdetail:hover {
+      color: #9ea6d4;
+
+}
+#billDetail h2 {
+      text-align: center;
+      font-size: 25px;
+}
+#billDetail h5 {
+      font-size: 19px;
+}
+#billDetail p {
+      font-size: 17px;
+      margin-bottom: 5px;
+}
+#billDetail #delete-bill-btn {
+      background-color: red;
+}
+/*! ---------------------------------------------------------------------------------------------------------- */
+#main-content #content-user-admin {
+      display: none;
+      padding: 10px;
+      box-shadow: rgba(0, 93, 244, 0.3) 0px 0px 0px 3px;
+      animation: topout 0.5s;
+}
+#main-content #content-user-admin table th {
+      padding: 10px 30px;
+      background-color: #b4bdf1;
+}
+#main-content #content-user-admin #removeUser {
+      border: none;
+      border-radius: 4px;
+      background-color: rgb(231, 231, 231);
+      width: 70px;
+      height: 30px;
+}
+#main-content #content-user-admin #removeUser:hover {
+      background-color: #9ea6d4;
+      color: white;
+}
+
+#customalert {
+      z-index: 100;
+      color: white;
+      visibility: hidden;
+      background-color: aqua;
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      width: 400px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translateX(-50%);
+}
+#customalert.show {
+      visibility: visible;
+}
+@keyframes topout{
+	0% {
+            transform: scale(0);
+            transform-origin: 50% 40%;
+      }
+      100% {
+            transform: scale(1);
+            transform-origin: 50% 50%;
+      }
+}
+@keyframes topdown{
+	0% {transform: translateY(-800px)}
+	100% {transform: translateY(0)}
+}
+@keyframes rightoutSearch{
+      0% {
+            transform: scale(0);
+            transform-origin: 90% 5%;
+      }
+      100% {
+            transform: scale(1);
+            transform-origin: 50% 0%;
+      }
+}
+::-webkit-scrollbar {
+      width: 8px; /* Độ rộng của thanh cuộn */
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background-color: #9ea6d4; /* Màu của nút cuộn */
+      border-radius: 5px; /* Độ cong của nút cuộn */
+    }
+    
+    ::-webkit-scrollbar-track {
+      background-color: rgb(145, 145, 145,0); /* Màu của phần bên dưới thanh cuộn */
+    }

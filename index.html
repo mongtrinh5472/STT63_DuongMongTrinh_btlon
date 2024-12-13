@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PTPShop.vn | PTP</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <link rel="shortcut icon" type="image/png" href="https://scontent.fsgn5-11.fna.fbcdn.net/v/t39.30808-6/386077936_1453543698803107_6541861815225744474_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5f2048&_nc_ohc=0jF5Fa8L5eUAX-UDY7B&_nc_ht=scontent.fsgn5-11.fna&cb_e2o_trans=q&oh=00_AfCgRI0Po1PgiWCqMTAVXAKH9UVOdas-0DMQYqn_24uB5w&oe=653D0CE4">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+    <body onload="createAdmin(),createProduct(),createSlideShowArray(),showProductStranger(0),moveSlideShow('slideShow_img'), moveSlideShow('user_page_slideShow_img')">
+      <div id="time-now"></div>
+        <section id="stranger-page"> <!--Trang khi user chưa đăng nhập(mặc định)-->
+            <div id="messenger-floating">
+                  <a href="#"><i class="fa-brands fa-facebook-messenger"></i></a>
+            </div>
+            <div id="modal-signin">
+                  <div id="signin-wrapper">
+                        <div id="container">    
+                            <h1>Đăng Ký</h1>
+                            <button onclick="closeSignin()" id="closeSignin-btn"><i class="fa-solid fa-xmark"></i></button>
+                            <form>
+                                <div class="box-input box-input-fullname">
+                                      <label for="signin-fullname">Họ và tên</label><br>
+                                      <input type="text" name="signin-fullname" id="signin-fullname">
+                                      <p class="error" id="signin-fullname-error">Họ và tên không hợp lệ</p>
+                                </div>
+                                <div class="box-input box-input-username">
+                                    <label for="signin-username">Tên Đăng Nhập</label><br>
+                                    <input type="text" name="signin-username" id="signin-username">
+                                    <p class="error" id="signin-username-error">Tên đăng nhập không hợp lệ</p>
+                                </div>
+                                <div class="box-input box-input-email">
+                                      <label for="signin-email">Email</label><br>
+                                      <input type="email" name="signin-email" id="signin-email">
+                                      <p class="error" id="signin-email-error">Email không hợp lệ</p>
+                                </div>
+                                <div class="box-input box-input-email">
+                                    <label for="signin-phone">Số Điện Thoại</label><br>
+                                    <input type="text" name="signin-phone" id="signin-phone">
+                                    <p class="error" id="signin-phone-error">Số điện thoại không hợp lệ</p> 
+                                </div>
+                                <div class="box-input box-input-pass">
+                                        <label for="signin-password">Mật Khẩu</label><br>
+                                        <input type="password" name="signin-password" id="signin-password">
+                                        <p class="error" id="signin-password-error">Mật khẩu không hợp lệ</p> 
+                                </div>
+                                <div class="box-input box-input-repass">
+                                        <label for="signin-repassword">Xác nhận mật Khẩu</label><br>
+                                        <input type="password" name="signin-repassword" id="signin-repassword">
+                                        <p class="error" id="signin-repassword-error">Vui lòng nhập lại mật khẩu</p>
+                                </div>
+                                <div id="signin-submit">
+                                        <button id="gotologin" type="button" onclick="showLogin()">Đã đăng ký?</button>
+                                        <button type="button" id="signin-btn" onclick="signin()">Đăng Ký</button>
+                                </div>
+            
+                                <div id="bysocial">
+                                        <button class="box-social" id="login-google">
+                                            <i class="fa-brands fa-google"></i>
+                                            Google
+                                        </button>
+                                        <button class="box-social" id="login-facebook">
+                                            <i class="fa-brands fa-square-facebook"></i>
+                                            Facebook
+                                        </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+            <div id="modal-login">
+                  <div id="login-wrapper">
+                        <div id="container">
+                              <h1>Đăng Nhập</h1>
+                              <button onclick="closeLogin()" id="closeLogin-btn"><i class="fa-solid fa-xmark"></i></button>
+                              <form>
+                                    <div class="box-input">
+                                          <label for="login-username">Tên Đăng Nhập</label><br>
+                                          <input type="username" name="login-username" id="login-username">
+                                          <p id="login-username-error" class="error">Tên đăng nhập không hợp lệ</p>
+                                    </div>
+                                    <div class="box-input box-input-pass">
+                                          <label for="login-password">Mật Khẩu</label><br>
+                                          <input type="password" name="login-password" id="login-password">
+                                          <p id="login-password-error" class="error">Mật khẩu không hợp lệ</p>
+                                    </div>
+                                    <div id="submit">
+                                          <a>Quên mật khẩu?</a>
+                                          <button type="button" id="login-btn" onclick="login()">Đăng Nhập</button>
+                                    </div>
+                                    <div id="bysocial">
+                                          <button id="gotosignin" type="button" onclick="showSignin()">
+                                                <i class="fa-solid fa-user-plus"></i>
+                                                Đăng ký
+                                          </button>
+                                          <a class="box-social" id="login-google">
+                                                <i class="fa-brands fa-google"></i>
+                                                Google
+                                          </a>
+                                          <a class="box-social" id="login-facebook">
+                                                <i class="fa-brands fa-square-facebook"></i>
+                                                Facebook
+                                          </a>
+                                    </div>
+                              </form>
+                        </div>
+                  </div>
+            </div>
+            <div id="modal-search">
+                  <div id="search-wrapper">
+                        <button onclick="closeSearch()" id="closeSearch-btn"><i class="fa-solid fa-xmark"></i></button>
+                        <h2>Tìm Kiếm Sản Phẩm</h2><br>
+                        <span style="font-size: 20px;margin-right: 10px;"><i class="fa-solid fa-magnifying-glass"></i></span><input type="text" name="search-info" id="search-info" placeholder="Tìm kiếm" onkeyup="searchStranger()">
+                        <input type="text" name="price-from" placeholder="Giá từ" id="search-price-from" onkeyup="searchStranger()">
+                        <input type="text" name="price-to" placeholder="Đến" id="search-price-to" onkeyup="searchStranger()">
+                        <div id="search-product-wrapper">
+                        </div>
+                  </div>
+            </div>
+            <div id="header">
+                <a href="index.html"><img src="./img/logo/logo2-removebg-preview.png" alt="logo-potico"></a>
+                <ul>
+                    <li><button onclick="showLogin()">Đăng nhập</button></li>
+                    <li><button onclick="showSignin()">Đăng ký</button></li>
+                    <li id="search-btn" onclick="showSearch()"><i class="fa-solid fa-magnifying-glass"></i></li>
+                </ul>
+            </div>
+            <div id="slideShow">
+                  <button id="moveBefore" class="moveSlideShow" onclick="moveSlideShowBefore('slideShow_img')"><i class="fa-solid fa-chevron-left"></i></button>
+                  <div id="slideShow_img">
+                        <!--? JS ở đây --> 
+                  </div>
+                  <button id="moveAfter" class="moveSlideShow" onclick="moveSlideShowAfter('slideShow_img')"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div id="sort-option">
+                  <span>Bộ lọc : </span>
+                  <button id="increase-btn" class="sort-btn">Giá tăng dần</button>
+                  <button id="decrease-btn" class="sort-btn">Giá giảm dần</button>
+            </div>
+            <div id="content">
+                  <!--?  JS ở đây -->
+            </div>
+            <div id="numberOfPageProduct">
+                  <!--? JS ở đây -->
+            </div>
+            <div id="footer">
+                <div id="footer1">
+                      <div id="footer-info">
+                            <h3>THÔNG TIN CHI TIẾT</h3>
+                            <ul>
+                                  <li>Địa Chỉ: TP.Hồ Chí Minh : Châu Thới, Phường 15, Quận 10</li>
+                                  <li>Chi nhánh: Hà Nội : An Dương, Phường Yên Phụ, Quận Tây Hồ</li>
+                                  <li>Điện thoại giá rẻ - Mua điện thoại xịn không lo về giá. Giao hàng nhanh trong ngày tại khu vực nội thành Hà Nội, Tp.HCM. Thu tiền mặt tận nơi, chuyển khoản hoặc thanh toán qua thẻ. Là lựa chọn tuyệt vời cho bản thân.</li>
+                            </ul>
+                      </div>
+                      <div id="footer-link">
+                            <h3>LIÊN KẾT TRANG WEB</h3>
+                            <ul>
+                                  <li><a href="#" class="link">Bộ sưu tập</a></li>
+                                  <li><a href="#" class="link">Giới thiệu</a></li>
+                                  <li><a href="#" class="link">Thông tin tuyển dụng</a></li>
+                                  <li><a href="#" class="link">Blog</a></li>
+                                  <li><a href="#" class="link">Theo dõi đơn hàng</a></li>
+                            </ul>
+                      </div>
+                      <div id="footer-service">
+                            <h3>CHĂM SÓC KHÁCH HÀNG</h3>
+                            <ul>
+                                  <li><a href="#" class="link">Liên hệ với chúng tôi</a></li>
+                                  <li><a href="#" class="link">Câu hỏi thường gặp</a></li>
+                                  <li><a href="#" class="link">Phương thức thanh toán</a></li>
+                                  <li><a href="#" class="link">Điều khoản và điều kiện</a></li>
+                                  <li><a href="#" class="link">Chính sách bảo mật</a></li>
+                            </ul>
+                      </div>
+                      <div id="footer-question">
+                            <h3>BẠN CÓ CÂU HỎI ?</h3>
+                            <ul>
+                                  <li><span style="font-weight: 600;">Điện thoại:</span><br><a href="#" class="link">1900 63 35 37</a></li>
+                                  <li>Thứ Hai - Chủ Nhật (8:00 - 19:00)</li>
+                                  <li><span style="font-weight: 600;">Email:</span><br><a href="#" class="link">a@gmail.com</a></li>
+                                  <li><span style="font-weight: 600;">Truyền thông và đối tác:</span><br><a href="#" class="link">marketing@potico.vn</a></li>
+                            </ul>
+                      </div>
+                      <div id="footer-about">
+                            <h3>PTPSHOP.vn</h3>
+                            <ul>
+            
+                                  <li><a href="#" style="font-weight: 600; color:#302d6f ;" class="link">Vietnam - PTPSHOP.vn</a></li>
+                                  <li><a href="#" style="font-weight: 600; color:#302d6f ;" class="link">Thailand - PTPSHOP.vn</a></li>
+                                  <li>Văn Phòng Hành Chính</li>
+                                  <li>TP.Hồ Chí Minh: Châu Thới, Phường 15, Quận 10</li>
+                                  <li>Hà Nội: An Dương, Phường Yên Phụ, Quận Tây Hồ</li>
+                            </ul>
+                      </div>
+                </div>
+                <div id="footer2">
+                      <div id="footer2-left"><i class="fa-regular fa-copyright fa-s"></i> 2023 CÔNG TY TNHH PTP STORE VIỆT NAM</div>
+                      <div></div>
+                      <div id="footer2-right">
+                            <div id="social-icon">
+                                  <i class="fa-brands fa-square-facebook fa-2xl icon"></i>
+                                  <i class="fa-brands fa-instagram fa-2xl icon"></i>
+                                  <i class="fa-brands fa-tiktok fa-2xl icon"></i>
+                                  <i class="fa-brands fa-youtube fa-2xl icon"></i>
+                                  <i class="fa-brands fa-pinterest fa-2xl icon"></i>
+                                  <i class="fa-brands fa-linkedin fa-2xl icon"></i>
+                            </div>
+                      </div>
+                </div>
+          </div>
+        </section>
+
+        <!--! User Page. Khi đã đăng nhập------------------------------------------------------------------------------------ -->
+
+        <section id="user-page">
+            <div id="user-page-modal-product-detail">
+                  <div id="user-page-product-detail">   
+                  </div>
+            </div>
+            <div id="user-page-modal-search">
+                  <div id="user-page-search-wrapper">
+                        <button onclick="closeSearchUser()" id="user-page-closeSearch-btn"><i class="fa-solid fa-xmark"></i></button>
+                        <h2>Tìm Kiếm Sản Phẩm</h2><br>
+                        <span style="font-size: 20px;margin-right: 10px;"><i class="fa-solid fa-magnifying-glass"></i></span><input type="text" name="search-info" id="user-page-search-info" placeholder="Tìm kiếm" onkeyup="searchUser()">
+                        <input type="text" name="price-from" placeholder="Giá từ" id="user-page-search-price-from" onkeyup="searchUser()">
+                        <input type="text" name="price-to" placeholder="Đến" id="user-page-search-price-to" onkeyup="searchUser()">
+                        <div id="user-page-search-product-wrapper">
+                        </div>
+                  </div>
+            </div>
+            <div id="user-page-header">
+                  <div></div>
+                  <a href="#"><img src="./img/logo/logo2-removebg-preview.png" alt="logo-potico"></a>
+                  <a href="#"><h4 id="user-page-helloUser"></h4></a>
+                  <ul>
+                        <!-- <li><button onclick="showLogin()">Đăng nhập</button></li>
+                        <li><button onclick="showSignin()">Đăng ký</button></li> -->
+                        <li><button onclick="logout()" id="user-page-button-logout-user">Đăng xuất</button></li>
+                        <li><span id="user-page-cart-quantity" value="0">0</span><button id="user-page-cart-button" onclick="showSectionCart()"><i class="fa-solid fa-cart-shopping"></i></button></li>
+                        <li id="user-page-search-btn" onclick="showSearchUser()"><i class="fa-solid fa-magnifying-glass"></i></li>
+                  </ul>
+            </div>
+            <div id="user-page-slideShow"> 
+                  <button id="user-page-moveBefore" class="moveSlideShow" onclick="moveSlideShowBefore('user_page_slideShow_img')"><i class="fa-solid fa-chevron-left"></i></button>
+                  <div id="user_page_slideShow_img"> 
+                        <!-- <img src="./img/slider1.png" alt=""> 
+                        <img src="./img/slider2.png" alt="">
+                        <img src="./img/slider3.png" alt="">
+                        <img src="./img/slider4.png" alt="">
+                        <img src="./img/slider5.png" alt="">  -->
+                  </div> 
+                  <button id="user-page-moveAfter" class="moveSlideShow" onclick="moveSlideShowAfter('user_page_slideShow_img')"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            
+            <div id="user-page-sort-option">
+                  <span>Bộ lọc : </span>
+                  <button id="user-page-increase-btn" class="sort-btn">Giá tăng dần</button>
+                  <button id="user-page-decrease-btn" class="sort-btn">Giá giảm dần</button>
+            </div>
+            <div id="user-page-content">
+                  <!--? Js ở đây -->
+            </div>
+            <div id="user-page-numberOfPageProduct">
+                  <!--? JS ở đây -->
+            </div>
+            <div id="footer">
+                  <div id="footer1">
+                        <div id="footer-info">
+                              <h3>THÔNG TIN CHI TIẾT</h3>
+                              <ul>
+                                    <li>Địa Chỉ: TP.Hồ Chí Minh : Châu Thới, Phường 15, Quận 10</li>
+                                    <li>Chi nhánh: Hà Nội : An Dương, Phường Yên Phụ, Quận Tây Hồ</li>
+                                    <li>Điện thoại giá rẻ - Mua điện thoại xịn không lo về giá. Giao hàng nhanh trong ngày tại khu vực nội thành Hà Nội, Tp.HCM. Thu tiền mặt tận nơi, chuyển khoản hoặc thanh toán qua thẻ. Là lựa chọn tuyệt vời cho bản thân.</li>
+                              </ul>
+                        </div>
+                        <div id="footer-link">
+                              <h3>LIÊN KẾT TRANG WEB</h3>
+                              <ul>
+                                    <li><a href="#" class="link">Bộ sưu tập</a></li>
+                                    <li><a href="#" class="link">Giới thiệu</a></li>
+                                    <li><a href="#" class="link">Thông tin tuyển dụng</a></li>
+                                    <li><a href="#" class="link">Blog</a></li>
+                                    <li><a href="#" class="link">Theo dõi đơn hàng</a></li>
+                              </ul>
+                        </div>
+                        <div id="footer-service">
+                              <h3>CHĂM SÓC KHÁCH HÀNG</h3>
+                              <ul>
+                                    <li><a href="#" class="link">Liên hệ với chúng tôi</a></li>
+                                    <li><a href="#" class="link">Câu hỏi thường gặp</a></li>
+                                    <li><a href="#" class="link">Phương thức thanh toán</a></li>
+                                    <li><a href="#" class="link">Điều khoản và điều kiện</a></li>
+                                    <li><a href="#" class="link">Chính sách bảo mật</a></li>
+                              </ul>
+                        </div>
+                        <div id="footer-question">
+                              <h3>BẠN CÓ CÂU HỎI ?</h3>
+                              <ul>
+                                    <li><span style="font-weight: 600;">Điện thoại:</span><br><a href="#" class="link">1900 63 35 37</a></li>
+                                    <li>Thứ Hai - Chủ Nhật (8:00 - 19:00)</li>
+                                    <li><span style="font-weight: 600;">Email:</span><br><a href="#" class="link">a@gmail.com</a></li>
+                                    <li><span style="font-weight: 600;">Truyền thông và đối tác:</span><br><a href="#" class="link">marketing@potico.vn</a></li>
+                              </ul>
+                        </div>
+                        <div id="footer-about">
+                              <h3>PTPSHOP.vn</h3>
+                              <ul>
+              
+                                    <li><a href="#" style="font-weight: 600; color:#302d6f ;" class="link">Vietnam - PTPSHOP.vn</a></li>
+                                    <li><a href="#" style="font-weight: 600; color:#302d6f ;" class="link">Thailand - PTPSHOP.vn</a></li>
+                                    <li>Văn Phòng Hành Chính</li>
+                                    <li>TP.Hồ Chí Minh: Châu Thới, Phường 15, Quận 10</li>
+                                    <li>Hà Nội: An Dương, Phường Yên Phụ, Quận Tây Hồ</li>
+                              </ul>
+                        </div>
+                  </div>
+                  <div id="footer2">
+                        <div id="footer2-left"><i class="fa-regular fa-copyright fa-s"></i> 2023 CÔNG TY TNHH PTP STORE VIỆT NAM</div>
+                        <div></div>
+                        <div id="footer2-right">
+                              <div id="social-icon">
+                                    <i class="fa-brands fa-square-facebook fa-2xl icon"></i>
+                                    <i class="fa-brands fa-instagram fa-2xl icon"></i>
+                                    <i class="fa-brands fa-tiktok fa-2xl icon"></i>
+                                    <i class="fa-brands fa-youtube fa-2xl icon"></i>
+                                    <i class="fa-brands fa-pinterest fa-2xl icon"></i>
+                                    <i class="fa-brands fa-linkedin fa-2xl icon"></i>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+        </section>
+
+      <!--! Cart Page(Đăng nhập mới sử đc ms hiện giỏ hàng) ------------------------------------------------------------------------------------------------------ -->
+
+        <section id="user-cart-page">
+            <div id="user-cart-page-header">
+                  <div></div>
+                  <a href="#"><img src="./img/logo/logo2-removebg-preview.png" alt="logo-potico"></a>
+                  <a href="#"><h4 id="user-cart-page-helloUser"></h4></a>
+                  <ul>
+                        <!-- <li><button onclick="showLogin()">Đăng nhập</button></li>
+                        <li><button onclick="showSignin()">Đăng ký</button></li> -->
+                        <li><button onclick="logout()" id="user-cart-page-button-logout-user">Đăng xuất</button></li>
+                        <li><!-- <a href="/UserPage/index.html" id="user-cart-page-homepage-btn">Trang chủ</a> --><button id="user-cart-page-homepage-btn" onclick="showSectionUser()">Trang chủ</button></li>
+                        <li><span id="user-cart-page-cart-quantity">1</span><button id="user-cart-page-cart-button"><i class="fa-solid fa-cart-shopping"></i></button></li>
+                  </ul>
+            </div>
+            <div id="user-cart-page-content">
+                  <div id="user-cart-page-title">
+                        <h1>Giỏ hàng</h1>
+                  </div>
+                  <div id="user-cart-page-cart-container">
+                        <table id="user-cart-page-cart-table">
+                              <!-- <tr>
+                                    <th></th>
+                                    <th>Sản phẩm</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Tổng</th>
+                              </tr>
+                              <tr>
+                                    <td><img src="/IMG/Product/BanhBrownies.png" alt=""></td>
+                                    <td>Bánh Brownies</td>
+                                    <td>150,000</td>
+                                    <td><button id="user-cart-page-quantitydown" onclick="quantitydown()">-</button><input value=1 id="user-cart-page-quantity"><button id="user-cart-page-quantityup" onclick="quantityup()">+</button></td>
+                                    <td><span id="user-cart-page-cart-totalprice"></span></td>
+                              </tr> -->
+                        </table>
+                        <div id="user-cart-page-total">Thành tiền : <span id="user-cart-page-totalprice-cart"></span></div>
+                        <button id="user-cart-page-deletecart" onclick="deleteCart()">Xóa tất cả</button>
+                        <button id="user-cart-page-buy" onclick="buy()">Thanh toán</button>
+                  </div>
+            </div>
+            <div id="footer">
+                  <div id="footer1">
+                        <div id="footer-info">
+                              <h3>THÔNG TIN CHI TIẾT</h3>
+                              <ul>
+                                    <li>Địa Chỉ: TP.Hồ Chí Minh : Châu Thới, Phường 15, Quận 10</li>
+                                    <li>Chi nhánh: Hà Nội : An Dương, Phường Yên Phụ, Quận Tây Hồ</li>
+                                    <li>Điện thoại giá rẻ - Mua điện thoại xịn không lo về giá. Giao hàng nhanh trong ngày tại khu vực nội thành Hà Nội, Tp.HCM. Thu tiền mặt tận nơi, chuyển khoản hoặc thanh toán qua thẻ. Là lựa chọn tuyệt vời cho bản thân.</li>
+                              </ul>
+                        </div>
+                        <div id="footer-link">
+                              <h3>LIÊN KẾT TRANG WEB</h3>
+                              <ul>
+                                    <li><a href="#" class="link">Bộ sưu tập</a></li>
+                                    <li><a href="#" class="link">Giới thiệu</a></li>
+                                    <li><a href="#" class="link">Thông tin tuyển dụng</a></li>
+                                    <li><a href="#" class="link">Blog</a></li>
+                                    <li><a href="#" class="link">Theo dõi đơn hàng</a></li>
+                              </ul>
+                        </div>
+                        <div id="footer-service">
+                              <h3>CHĂM SÓC KHÁCH HÀNG</h3>
+                              <ul>
+                                    <li><a href="#" class="link">Liên hệ với chúng tôi</a></li>
+                                    <li><a href="#" class="link">Câu hỏi thường gặp</a></li>
+                                    <li><a href="#" class="link">Phương thức thanh toán</a></li>
+                                    <li><a href="#" class="link">Điều khoản và điều kiện</a></li>
+                                    <li><a href="#" class="link">Chính sách bảo mật</a></li>
+                              </ul>
+                        </div>
+                        <div id="footer-question">
+                              <h3>BẠN CÓ CÂU HỎI ?</h3>
+                              <ul>
+                                    <li><span style="font-weight: 600;">Điện thoại:</span><br><a href="#" class="link">1900 63 35 37</a></li>
+                                    <li>Thứ Hai - Chủ Nhật (8:00 - 19:00)</li>
+                                    <li><span style="font-weight: 600;">Email:</span><br><a href="#" class="link">a@gmail.com</a></li>
+                                    <li><span style="font-weight: 600;">Truyền thông và đối tác:</span><br><a href="#" class="link">marketing@potico.vn</a></li>
+                              </ul>
+                        </div>
+                        <div id="footer-about">
+                              <h3>PTPSHOP.vn</h3>
+                              <ul>
+              
+                                    <li><a href="#" style="font-weight: 600; color:#302d6f ;" class="link">Vietnam - PTPSHOP.vn</a></li>
+                                    <li><a href="#" style="font-weight: 600; color:#302d6f ;" class="link">Thailand - PTPSHOP.vn</a></li>
+                                    <li>Văn Phòng Hành Chính</li>
+                                    <li>TP.Hồ Chí Minh: Châu Thới, Phường 15, Quận 10</li>
+                                    <li>Hà Nội: An Dương, Phường Yên Phụ, Quận Tây Hồ</li>
+                              </ul>
+                        </div>
+                  </div>
+                  <div id="footer2">
+                        <div id="footer2-left"><i class="fa-regular fa-copyright fa-s"></i> 2023 CÔNG TY TNHH PTP STORE VIỆT NAM</div>
+                        <div></div>
+                        <div id="footer2-right">
+                              <div id="social-icon">
+                                    <i class="fa-brands fa-square-facebook fa-2xl icon"></i>
+                                    <i class="fa-brands fa-instagram fa-2xl icon"></i>
+                                    <i class="fa-brands fa-tiktok fa-2xl icon"></i>
+                                    <i class="fa-brands fa-youtube fa-2xl icon"></i>
+                                    <i class="fa-brands fa-pinterest fa-2xl icon"></i>
+                                    <i class="fa-brands fa-linkedin fa-2xl icon"></i>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+        </section>
+        <div id="customalert">
+        </div>
+    </body>
+    <script type="text/javascript" src="main.js" ></script>
+    <script>
+      // sự kiện lọc sản phẩm theo giá trị
+      let increase_btn = document.getElementById('increase-btn'); 
+      let decrease_btn = document.getElementById('decrease-btn');
+      increase_btn.addEventListener('click',function () { // Gắn sự kiện 'click' cho nút tăng (increase)
+            if(increase_btn.classList.contains('clicked') > 0) { // chưa click thì hiện giá trị mặc định
+                  showListPageProductStranger();
+                  showProductStranger(0);
+                  increase_btn.classList.remove('clicked');
+            }else { // nếu nhấn thì hiện thị sản phẩm theo giá trị tăng dần
+                  showListPageSortedIncrease();
+                  showSortedIncrease();
+                  decrease_btn.classList.remove('clicked');
+                  increase_btn.classList.add('clicked');
+            }
+      })
+      decrease_btn.addEventListener('click',function () {
+            if(decrease_btn.classList.contains('clicked')) {
+                  showListPageProductStranger();
+                  showProductStranger(0);
+                  decrease_btn.classList.remove('clicked');
+            }else {
+                  showListPageSortedDecrease();
+                  showSortedDecrease();
+                  increase_btn.classList.remove('clicked');
+                  decrease_btn.classList.add('clicked');
+            }
+      })
+      //? User
+      let increase_btn_user = document.getElementById('user-page-increase-btn');
+      let decrease_btn_user = document.getElementById('user-page-decrease-btn');
+      increase_btn_user.addEventListener('click',function () {
+            if(increase_btn_user.classList.contains('clicked') > 0) {
+                  showListPageProductUser();
+                  showProductUser(0);
+                  increase_btn_user.classList.remove('clicked');
+            }else {
+                  showListPageSortedIncreaseUser();
+                  showSortedIncreaseUser(0);
+                  decrease_btn_user.classList.remove('clicked');
+                  increase_btn_user.classList.add('clicked');
+            }
+      })
+      decrease_btn_user.addEventListener('click',function () {
+            if(decrease_btn_user.classList.contains('clicked') > 0) {
+                  showListPageProductUser();
+                  showProductUser(0);
+                  decrease_btn_user.classList.remove('clicked');
+            }else {
+                  showListPageSortedDecreaseUser();
+                  showSortedDecreaseUser(0);
+                  increase_btn_user.classList.remove('clicked');
+                  decrease_btn_user.classList.add('clicked');
+            }
+      })
+    </script>
+</html>
